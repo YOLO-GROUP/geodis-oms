@@ -17,3 +17,6 @@ II. Install Laravel framework
 	B.	Mac OS
 		1.	composer create-project laravel/laravel <path to distination folder> --prefer-dist
 		2. php artisan serve
+
+III. Document:
+	1.	Laravel cheat sheet: http://cheats.jesse-obrien.ca/
