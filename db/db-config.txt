@@ -1,0 +1,9 @@
+I) How to change root password for MySQL in XAMPP
+	1) Access http://localhost/phpmyadmin and execute the command: UPDATE mysql.user SET Password=PASSWORD('geodis2016') WHERE User='root'; FLUSH PRIVILEGES;
+	2) Open the file [XAMPP Installation Path] / phpmyadmin / config.inc.php
+	Edit: $cfg\['Servers'\]\[$i\]['password'] = 'geodis2016';
+	3) Restart XAMPP
+II) DB info:
+	- user: root
+	- password: geodis2016
+	- db-name: geodis-oms
