@@ -8,22 +8,22 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema giodis-oms
+-- Schema geodis-oms
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `giodis-oms` ;
+DROP SCHEMA IF EXISTS `geodis-oms` ;
 
 -- -----------------------------------------------------
--- Schema giodis-oms
+-- Schema geodis-oms
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `giodis-oms` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `giodis-oms` ;
+CREATE SCHEMA IF NOT EXISTS `geodis-oms` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `geodis-oms` ;
 
 -- -----------------------------------------------------
--- Table `giodis-oms`.`customer`
+-- Table `geodis-oms`.`customer`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `giodis-oms`.`customer` ;
+DROP TABLE IF EXISTS `geodis-oms`.`customer` ;
 
-CREATE TABLE IF NOT EXISTS `giodis-oms`.`customer` (
+CREATE TABLE IF NOT EXISTS `geodis-oms`.`customer` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `storer_code` VARCHAR(45) NOT NULL,
   `customer_code` VARCHAR(255) NOT NULL,
@@ -53,11 +53,11 @@ COMMENT = 'Customer';
 
 
 -- -----------------------------------------------------
--- Table `giodis-oms`.`user`
+-- Table `geodis-oms`.`user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `giodis-oms`.`user` ;
+DROP TABLE IF EXISTS `geodis-oms`.`user` ;
 
-CREATE TABLE IF NOT EXISTS `giodis-oms`.`user` (
+CREATE TABLE IF NOT EXISTS `geodis-oms`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_name` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
@@ -71,11 +71,11 @@ CREATE TABLE IF NOT EXISTS `giodis-oms`.`user` (
 
 
 -- -----------------------------------------------------
--- Table `giodis-oms`.`connector`
+-- Table `geodis-oms`.`connector`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `giodis-oms`.`connector` ;
+DROP TABLE IF EXISTS `geodis-oms`.`connector` ;
 
-CREATE TABLE IF NOT EXISTS `giodis-oms`.`connector` (
+CREATE TABLE IF NOT EXISTS `geodis-oms`.`connector` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `ip_address` VARCHAR(45) NULL,
   `database_name` VARCHAR(45) NULL,
@@ -92,11 +92,11 @@ CREATE TABLE IF NOT EXISTS `giodis-oms`.`connector` (
 
 
 -- -----------------------------------------------------
--- Table `giodis-oms`.`user_has_connector`
+-- Table `geodis-oms`.`user_has_connector`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `giodis-oms`.`user_has_connector` ;
+DROP TABLE IF EXISTS `geodis-oms`.`user_has_connector` ;
 
-CREATE TABLE IF NOT EXISTS `giodis-oms`.`user_has_connector` (
+CREATE TABLE IF NOT EXISTS `geodis-oms`.`user_has_connector` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `connector_id` INT NOT NULL,
@@ -105,22 +105,22 @@ CREATE TABLE IF NOT EXISTS `giodis-oms`.`user_has_connector` (
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_user_has_connector_user`
     FOREIGN KEY (`user_id`)
-    REFERENCES `giodis-oms`.`user` (`id`)
+    REFERENCES `geodis-oms`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_has_connector_connector1`
     FOREIGN KEY (`connector_id`)
-    REFERENCES `giodis-oms`.`connector` (`id`)
+    REFERENCES `geodis-oms`.`connector` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
 
 -- -----------------------------------------------------
--- Table `giodis-oms`.`sale_order`
+-- Table `geodis-oms`.`sale_order`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `giodis-oms`.`sale_order` ;
+DROP TABLE IF EXISTS `geodis-oms`.`sale_order` ;
 
-CREATE TABLE IF NOT EXISTS `giodis-oms`.`sale_order` (
+CREATE TABLE IF NOT EXISTS `geodis-oms`.`sale_order` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `sale_order_no` VARCHAR(45) NOT NULL,
   `storer_code` VARCHAR(45) NOT NULL,
@@ -157,23 +157,23 @@ CREATE TABLE IF NOT EXISTS `giodis-oms`.`sale_order` (
   INDEX `fk_sale_order_user_has_connector1_idx` (`user_has_connector_id` ASC),
   CONSTRAINT `fk_SalesOrder_customer1`
     FOREIGN KEY (`customer_id`)
-    REFERENCES `giodis-oms`.`customer` (`id`)
+    REFERENCES `geodis-oms`.`customer` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_sale_order_user_has_connector1`
     FOREIGN KEY (`user_has_connector_id`)
-    REFERENCES `giodis-oms`.`user_has_connector` (`id`)
+    REFERENCES `geodis-oms`.`user_has_connector` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `giodis-oms`.`sale_order_detail`
+-- Table `geodis-oms`.`sale_order_detail`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `giodis-oms`.`sale_order_detail` ;
+DROP TABLE IF EXISTS `geodis-oms`.`sale_order_detail` ;
 
-CREATE TABLE IF NOT EXISTS `giodis-oms`.`sale_order_detail` (
+CREATE TABLE IF NOT EXISTS `geodis-oms`.`sale_order_detail` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `seq_no` INT NOT NULL,
   `item` VARCHAR(45) NULL,
@@ -196,18 +196,18 @@ CREATE TABLE IF NOT EXISTS `giodis-oms`.`sale_order_detail` (
   INDEX `fk_sale_order_detail_sale_order1_idx` (`sale_order_id` ASC),
   CONSTRAINT `fk_sale_order_detail_sale_order1`
     FOREIGN KEY (`sale_order_id`)
-    REFERENCES `giodis-oms`.`sale_order` (`id`)
+    REFERENCES `geodis-oms`.`sale_order` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `giodis-oms`.`report`
+-- Table `geodis-oms`.`report`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `giodis-oms`.`report` ;
+DROP TABLE IF EXISTS `geodis-oms`.`report` ;
 
-CREATE TABLE IF NOT EXISTS `giodis-oms`.`report` (
+CREATE TABLE IF NOT EXISTS `geodis-oms`.`report` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `report_name` VARCHAR(45) NULL,
   `query` VARCHAR(1000) NULL,
@@ -222,11 +222,11 @@ CREATE TABLE IF NOT EXISTS `giodis-oms`.`report` (
 
 
 -- -----------------------------------------------------
--- Table `giodis-oms`.`role`
+-- Table `geodis-oms`.`role`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `giodis-oms`.`role` ;
+DROP TABLE IF EXISTS `geodis-oms`.`role` ;
 
-CREATE TABLE IF NOT EXISTS `giodis-oms`.`role` (
+CREATE TABLE IF NOT EXISTS `geodis-oms`.`role` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `role_name` VARCHAR(15) NOT NULL,
   `description` VARCHAR(1000) NULL,
@@ -235,11 +235,11 @@ CREATE TABLE IF NOT EXISTS `giodis-oms`.`role` (
 
 
 -- -----------------------------------------------------
--- Table `giodis-oms`.`user_has_role`
+-- Table `geodis-oms`.`user_has_role`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `giodis-oms`.`user_has_role` ;
+DROP TABLE IF EXISTS `geodis-oms`.`user_has_role` ;
 
-CREATE TABLE IF NOT EXISTS `giodis-oms`.`user_has_role` (
+CREATE TABLE IF NOT EXISTS `geodis-oms`.`user_has_role` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user_id` INT NOT NULL,
   `role_id` INT NOT NULL,
@@ -248,12 +248,12 @@ CREATE TABLE IF NOT EXISTS `giodis-oms`.`user_has_role` (
   INDEX `fk_user_has_role_user1_idx` (`user_id` ASC),
   CONSTRAINT `fk_user_has_role_user1`
     FOREIGN KEY (`user_id`)
-    REFERENCES `giodis-oms`.`user` (`id`)
+    REFERENCES `geodis-oms`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_has_role_role1`
     FOREIGN KEY (`role_id`)
-    REFERENCES `giodis-oms`.`role` (`id`)
+    REFERENCES `geodis-oms`.`role` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
