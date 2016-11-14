@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// add new route into middleware group
+Route::group(['middleware' => ['web']], function() {
+	Route::resource('report','ReportController');
+});
