@@ -16,6 +16,10 @@ Route::get('/', function () {
 });
 
 // add new route into middleware group
-Route::group(['middleware' => ['web']], function() {
+Route::group(['middleware' => ['auth', 'web']], function() {
 	Route::resource('report','ReportController');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
