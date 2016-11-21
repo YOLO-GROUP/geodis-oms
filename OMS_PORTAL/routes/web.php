@@ -18,3 +18,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/admin', 'AdminController@index');
+
+Route::get('/customer', 'CustomerManagementController@index');
+
+Route::get('/inventory', 'InventoryManagementController@index');
+
+Route::get('/order', 'OrderManagementController@index');
+
+Route::get('/report', 'ReportManagementController@index');
+
