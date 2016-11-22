@@ -20,3 +20,18 @@ II. Install Laravel framework
 
 III. Document:
 	1.	Laravel cheat sheet: http://cheats.jesse-obrien.ca/
+
+IV: Deployment:
+	1.	update file .env with info database production
+	2.	terminal 'composer install'
+	3.	terminal 'composer update'
+	4.  terminal 'npm install'
+	5. 	terminal 'npm run prod'
+
+V: Development:
+	1.	update file .env with info database dev local
+	2.	terminal 'composer install'
+	3.	terminal 'composer update'
+	4.  terminal 'npm install'
+	5. 	terminal 'npm run dev'
+	6.	terminal 'php artisan serve'
