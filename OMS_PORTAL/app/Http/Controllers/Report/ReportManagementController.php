@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Report;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class ReportManagementController extends Controller
 {
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -23,6 +24,6 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin');
+        return view('report.index');
     }
 }

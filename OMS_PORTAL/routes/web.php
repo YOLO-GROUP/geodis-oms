@@ -19,13 +19,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/admin', 'AdminController@index');
+Route::get('/admin', 'Admin\AdminController@index');
 
-Route::get('/customer', 'CustomerManagementController@index');
+Route::get('/customer', 'Customer\CustomerManagementController@index');
 
-Route::get('/inventory', 'InventoryManagementController@index');
+Route::get('/inventory', 'Inventory\InventoryManagementController@index');
 
-Route::get('/order', 'OrderManagementController@index');
+Route::get('/order', 'Order\OrderManagementController@index');
 
-Route::get('/report', 'ReportManagementController@index');
+Route::get('/report', 'Report\ReportManagementController@index');
 
