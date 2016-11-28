@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('linkCss', '/css/order.css')
+@section('linkJs', '/js/order.js')
+
 @section('content')
     <div class="container">
         <div class="row">

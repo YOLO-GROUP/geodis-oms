@@ -15,5 +15,7 @@ require('laravel-elixir-vue-2');
 
 elixir(mix => {
     mix.sass('login/login.scss')
-        .webpack('login/login.js');
+        .sass('order/order.scss')
+        .webpack('login/login.js')
+        .webpack('order/order.js');
 });

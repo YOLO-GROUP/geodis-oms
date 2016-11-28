@@ -22,8 +22,15 @@ $font-size-base: 14px;
 $line-height-base: 1.6;
 $text-color: #636b6f;
 
-// Navbar
-$navbar-default-bg: #fff;
+
+//== Navbar
+//
+//##
+// Basics of a navbar
+$navbar-default-bg: #26727B;
+// Navbar links
+$navbar-default-color: white;
+$navbar-default-link-color: white;
 
 // Buttons
 $btn-default-color: $text-color;
