@@ -40,7 +40,7 @@
                                     </label>
                                 </div>
                         </div>
-                        <input type="submit" value="Login" class="btn btn-primary btn-block btn-lg"/>
+                        <input type="submit" value="Login" class="btn btn-primary btn-block"/>
                                 <a class="btn btn-link" href="{{ url('/password/reset') }}">
                                     Forgot Your Password?
                                 </a>

@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/changePassword', 'Auth\ChangePasswordController@index');
+
 Route::get('/admin', 'Admin\AdminController@index');
 
 Route::get('/customer', 'Customer\CustomerManagementController@index');
