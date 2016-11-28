@@ -11,15 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
 
-Route::get('/changePassword', 'Auth\ChangePasswordController@index');
+Route::group([], function() {
+    Route::get('/', 'HomeController@index');
+    Route::get('/home', 'HomeController@index');
+});
+
+Route::match(['get', 'post'], '/changePassword', 'Auth\ChangePasswordController@index');
 
 Route::get('/admin', 'Admin\AdminController@index');
 
